@@ -1,1 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <title>Sathish Home Automation</title>
+</head>
+<body>
+   <div class="container">
+       <header>
+           <h1 id='title'>Garden Irrigation</h1>
+           <p id='description'>
+              Automation system
+           </p>
+           <p id='description'>
+              WebServer Time : %SERVER_TIME%
+           </p>		   
+           <p id='description'>
+              Drip Morning Timer Duration: %MOR_DURATION% Minutes
+           </p>
+           <p id='description'>
+              Drip Evening Timer Duration: %EVE_DURATION% Minutes
+           </p>		
+           <p id='description'>
+              Sprinkle Morning Timer Duration: %SPR_M_DURATION% Minutes
+           </p>
+           <p id='description'>
+              Sprinkle Evening Timer Duration: %SPR_E_DURATION% Minutes
+           </p>		
+           <p id='description'>
+              List of connected clients %CLIENTS_LIST%
+           </p>			   
+       </header>
+           <form id='survey-form1' action="#">
+           <div class='form-input'>
+               Solenoid relay status:
+               <input type='radio' name='answer' id='radio-btn' value='on' %R_ON_CHECKED% />On
+               <input type='radio' name='answer' id='radio-btn' value='off' %R_OFF_CHECKED% />Off <span>
+                <input type="hidden" name="on_demand_release" value="com" >
+               <input  type="submit" value="Submit"> </span>
+           </div>
+           </form>
+        </p>
+	   <p>
+           <form id='survey-form1' action="#">
+           <div class='form-input'>
+               Sprinkle Motor status:
+               <input type='radio' name='answer' id='radio-btn' value='on' %SPR_R_ON_CHECKED% />On
+               <input type='radio' name='answer' id='radio-btn' value='off' %SPR_R_OFF_CHECKED% />Off <span>
+                <input type="hidden" name="spr_ondemand_rel" value="com" >
+               <input  type="submit" value="Submit"> </span>
+           </div>
+           </form>
+	   </p>		
+	   <p>
+           <form id='survey-form1' action="/clientdeepsleep" method="post">
+           <div class='form-input'>
+               Client Deep Sleep Mode:
+               <input type='radio' name='answer' id='radio-btn' value='on' %CLT_DEEP_ON_CHECKED% />On
+               <input type='radio' name='answer' id='radio-btn' value='off' %CLT_DEEP_OFF_CHECKED% />Off <span>
+                <input type="hidden" name="client_deep_sleep_status" value="com" >
+               <input  type="submit" value="Submit"> </span>
+           </div>
+           </form>
+	   </p>	   
+        <form id='survey-form1' action="#">
+                <div class='form-input'>
+                Update Server time: <input  type="datetime-local" name="answer"  value="%SERVER_TIME%">
+                <input type="hidden" name="s_time" value="s_val" >
+                 <input  type="submit" value="Submit">
+                </div>
+        </form>
+		</p>		
+		<p>		
+           <form id='survey-form1' action="#">
+          <header>
+           <h1>Drip Irrigation Morning Schedule</h1>
+         </header>
+           <hr>
+           <div class='form-input'>
+               Irigation:
+               <input type='radio' name='answer' id='radio-btn' value='on' %M_ON_CHECKED% />On
+              <input type='radio' name='answer' id='radio-btn' value='off' %M_OFF_CHECKED%/>Off <span>
+               <input type="hidden" name="irr_schedule_status" value="mor" >
+               <input  type="submit" value="Submit"> </span>
+           </div>
+           </form>
+        <form id='survey-form1' action="#">
+                <div class='form-input'>
+                 Start Time: <input id="edit1" type="time" name="answer" value="%MORNING_SCHEDULE%">
+                <input type="hidden" name="irr_time" value="mor" >
+                 <input  type="submit" value="Submit">
+                </div>
+        </form>
+        <form id='survey-form1' action="#">
+                <div class='form-input'>
+                Duration(1 to 60 minutes): <input id="edit1" type="number" name="answer" min="1" max="60" value="%MOR_DURATION%" size="5">
+                <input type="hidden" name="irr_duration" value="mor" >
+                 <input  type="submit" value="Submit">
+                </div>
+        </form>
+        </p>
+        <p>
+           <form id='survey-form1' action="#">
+             <header>
+              <h1>Drip Irrigation Evening Schedule</h1>
+             </header>
+           <hr>
+           <div class='form-input'>
+               Irrigation :
+               <input type='radio' name='answer' id='radio-btn' value='on' %E_ON_CHECKED% />On
+               <input type='radio' name='answer' id='radio-btn' value='off' %E_OFF_CHECKED%/>Off <span>
+                <input type="hidden" name="irr_schedule_status" value="eve" >
+               <input  type="submit" value="Submit"> </span>
+           </div>
+           </form>
 
+        <form id='survey-form1' action="#">
+                <div class='form-input'>
+                Start Time: <input id="edit1" type="time" name="answer" value="%EVENING_SCHEDULE%">
+                <input type="hidden" name="irr_time" value="eve" >
+                 <input  type="submit" value="Submit">
+                </div>
+        </form>
+        <form id='survey-form1' action="#">
+                <div class='form-input'>
+                 Duration(1 to 60 minutes): <input id="edit1" type="number" name="answer" min="1" max="60" value="%EVE_DURATION%" size="5">
+                <input type="hidden" name="irr_duration" value="eve" >
+                 <input  type="submit" value="Submit">
+                </div>
+        </form>
+        </p>	
+	   <p>		
+           <form id='survey-form1' action="#">
+          <header>
+           <h1>Sprinkle Irrigation Morning Schedule</h1>
+         </header>
+           <hr>
+           <div class='form-input'>
+               Irigation:
+               <input type='radio' name='answer' id='radio-btn' value='on' %SPR_M_ON_CHECKED% />On
+              <input type='radio' name='answer' id='radio-btn' value='off' %SPR_M_OFF_CHECKED%/>Off <span>
+               <input type="hidden" name="spr_irr_schedule_status" value="mor" >
+               <input  type="submit" value="Submit"> </span>
+           </div>
+           </form>
+        <form id='survey-form1' action="#">
+                <div class='form-input'>
+                 Start Time: <input id="edit1" type="time" name="answer" value="%SPR_MORNING_SCHEDULE%">
+                <input type="hidden" name="spr_irr_time" value="mor" >
+                 <input  type="submit" value="Submit">
+                </div>
+        </form>
+        <form id='survey-form1' action="#">
+                <div class='form-input'>
+                Duration(1 to 60 minutes): <input id="edit1" type="number" name="answer" min="1" max="60" value="%SPR_M_DURATION%" size="5">
+                <input type="hidden" name="spr_irr_duration" value="mor" >
+                 <input  type="submit" value="Submit">
+                </div>
+        </form>
+        </p>
+        <p>
+           <form id='survey-form1' action="#">
+             <header>
+              <h1>Sprinkle Irrigation Evening Schedule</h1>
+             </header>
+           <hr>
+           <div class='form-input'>
+               Irrigation :
+               <input type='radio' name='answer' id='radio-btn' value='on' %SPR_E_ON_CHECKED% />On
+               <input type='radio' name='answer' id='radio-btn' value='off' %SPR_E_OFF_CHECKED%/>Off <span>
+                <input type="hidden" name="spr_irr_schedule_status" value="eve" >
+               <input  type="submit" value="Submit"> </span>
+           </div>
+           </form>
+
+        <form id='survey-form1' action="#">
+                <div class='form-input'>
+                Start Time: <input id="edit1" type="time" name="answer" value="%SPR_EVENING_SCHEDULE%">
+                <input type="hidden" name="spr_irr_time" value="eve" >
+                 <input  type="submit" value="Submit">
+                </div>
+        </form>
+        <form id='survey-form1' action="#">
+                <div class='form-input'>
+                 Duration(1 to 60 minutes): <input id="edit1" type="number" name="answer" min="1" max="60" value="%SPR_E_DURATION%" size="5">
+                <input type="hidden" name="spr_irr_duration" value="eve" >
+                 <input  type="submit" value="Submit">
+                </div>
+        </form>
+        </p>		
+		
+      <p>
+           <form id='survey-form1' action="#">
+             <header>
+              <h1>Soil Moisture sensors </h1>
+             </header>
+           <hr>
+           <div class='form-input'>
+               Soil Moisture :
+               <input type='radio' name='answer' id='radio-btn' value='on' %SOIL_ON_CHECKED% />Enable
+               <input type='radio' name='answer' id='radio-btn' value='off' %SOIL_OFF_CHECKED%/>Disable <span>
+                <input type="hidden" name="soil_sensor_status" value="com" >
+               <input  type="submit" value="Submit"> </span>
+           </div>
+           </form>
+
+        <form id='survey-form1' action="#">
+           <div class='form-input'>
+               Drip Auto Irrigation :
+               <input type='radio' name='answer' id='radio-btn' value='on' %DRIP_SOIL_AUTO_ON_CHECKED% />Enable
+               <input type='radio' name='answer' id='radio-btn' value='off' %DRIP_SOIL_AUTO_OFF_CHECKED%/>Disable<span>
+                <input type="hidden" name="soil_drip_auto_irr_status" value="com" >
+               <input  type="submit" value="Submit"> </span>
+           </div>
+        </form>
+        <form id='survey-form1' action="#">
+           <div class='form-input'>
+               Sprinkle Auto Irrigation :
+               <input type='radio' name='answer' id='radio-btn' value='on' %SPR_SOIL_AUTO_ON_CHECKED% />Enable
+               <input type='radio' name='answer' id='radio-btn' value='off' %SPR_SOIL_AUTO_OFF_CHECKED%/>Disable<span>
+                <input type="hidden" name="soil_spr_auto_irr_status" value="com" >
+               <input  type="submit" value="Submit"> </span>
+           </div>
+        </form>		
+        <form id='survey-form1' action="#">
+                <div class='form-input'>
+                 Present Moisture Level: <input id="edit1" type="number" name="soil_moisture_p_l" min="1" max="100" value="%SOIL_MOISTURE_LEVEL%" readonly size="5">
+                </div>
+        </form>		
+        <form id='survey-form1' action="#">
+                <div class='form-input'>
+                 Soil Moisture Lower Level to Monitor( 1 - 50): <input id="edit1" type="number" name="answer" min="1" max="100" value="%SOIL_MOISTURE_L_L%" size="5">
+                <input type="hidden" name="soil_moisture_l_l" value="eve" >
+                 <input  type="submit" value="Submit">
+                </div>
+        </form>
+        <form id='survey-form1' action="#">
+                <div class='form-input'>
+                 Soil Moisture Upper Level to Monitor( 10 - 100): <input id="edit1" type="number" name="answer" min="10" max="100" value="%SOIL_MOISTURE_H_L%" size="5" ><span>
+                <input type="hidden" name="soil_moisture_h_l" value="eve" >
+                 <input  type="submit" value="Submit">
+                </div>
+        </form>	
+        <form id='survey-form1' action="#">
+                <div class='form-input'>
+                 Irrigation Server host: <input id="edit1" type="text" name="answer" size="40" list="host" >
+				 <datalist id="host">
+				 <option value="%SOIL_DATA_HOST_URL%">
+				 </datalist>
+				 <span>
+                <input type="hidden" name="soil_data_host" value="com" >
+                 <input  type="submit" value="Submit">
+                </div>
+        </form>			
+		</p>
+		
+        <p>
+           <form id='survey-form1' action="/restartESP" method="post">
+             <header>
+              <h1>Connect Wifi Network</h1>
+             </header>
+           <hr>
+                <div class='form-input'>
+				Wifi Mode :
+               <input type='radio' name='wifimode' id='radio-btn' value='on' %WIFI_AP_ON% />Standard AP 
+               <input type='radio' name='wifimode' id='radio-btn' value='off' %WIFI_AP_OFF% />Wifi
+			   <input type="hidden" name="update_wifi_mode" value="com" >
+			   <input  type="submit" value="Submit">
+				<br><br>
+                SSID: <input id="edit1" type="text" name="wifissid" value="%WIFI_SSID%">		
+				<br>
+                password : <input id="edit1" type="password" name="wifipass" value="%WIFI_PASS%">		
+			   <input type="hidden" name="update_wifi_conf" value="com" >				
+				<br><br>
+               <input  type="submit" value="Submit"> </span>
+           </div>
+        </form>
+        </p>			
+   </div>
+
+</body>
+</html>
